@@ -104,6 +104,12 @@ def impact_report(donations, distributions):
     print(f"Total food collected: {collected} servings")
     print(f"Food allocated: {total_distributed} servings")
     print(f"Food still in inventory: {in_inventory} servings")
+    # expired batches remain in the inventory count but can never be handed out
+    usable = 0
+    for d in donations:
+        if d.is_expired() == False:
+            usable = usable + d.servings
+    print(f"Food usable for distribution (not expired): {usable} servings")
     if collected > 0:
         # distribution rate as a percentage with one decimal
         rate = round(total_distributed * 100 / collected, 1)

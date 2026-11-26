@@ -28,7 +28,7 @@ Selected SDG: SDG 2 - Zero Hunger.
 - Inventory search by food category
 - Recipient matching that checks category compatibility and remaining capacity
 - Partial allocations capped by the batch size and the recipient's free space, with emptied batches removed
-- Stock reconciliation in the impact report: collected = inventory + allocated, with the names of organisations holding recorded allocations and the urgent batches listed
+- Stock reconciliation in the impact report: collected = inventory + allocated, usable stock separated from expired batches, with the names of organisations holding recorded allocations and the urgent batches listed
 - Donor contribution report with the total servings each donor has given and the top donor
 - Input validation on every prompt
 
@@ -163,6 +163,7 @@ IMPACT REPORT
 Total food collected: 320 servings
 Food allocated: 40 servings
 Food still in inventory: 280 servings
+Food usable for distribution (not expired): 230 servings
 Distribution rate: 12.5 percent
 Recipient organisations with recorded allocations: 1
  - Hope Food Bank KL
