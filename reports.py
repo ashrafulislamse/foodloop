@@ -105,8 +105,8 @@ def impact_report(donations, distributions):
     print(f"Food redistributed: {total_distributed} servings")
     print(f"Food still in inventory: {in_inventory} servings")
     if collected > 0:
-        # whole number percent, no decimals needed
-        rate = total_distributed * 100 // collected
+        # distribution rate as a percentage with one decimal
+        rate = round(total_distributed * 100 / collected, 1)
         print(f"Distribution rate: {rate} percent")
     # recipients served, unique names through parallel lists
     served = []
@@ -121,26 +121,30 @@ def impact_report(donations, distributions):
         if position == -1:
             served.append(name)
     print(f"Recipient organisations served: {len(served)}")
-    # batches that must move soon
-    near_expiry = 0
+    for name in served:
+        print(f" - {name}")
+    # batches that must move soon, named so volunteers can act on them
+    urgent = []
     for d in donations:
         if d.is_expired() == False and d.expiry_days <= 2:
-            near_expiry = near_expiry + 1
-    print(f"Batches needing urgent distribution: {near_expiry}")
+            urgent.append(d)
+    print(f"Batches needing urgent distribution: {len(urgent)}")
+    for d in urgent:
+        print(f" - {d.food_name} from {d.donor} ({d.expiry_days} days left)")
     print("Every meal moved is one step closer to SDG 2: Zero Hunger")
 
-# meals per donor and the top donor
-def donor_report(distributions):
+# servings given per donor across the whole session and the top donor
+def donor_report(contributions):
     print_header("DONOR CONTRIBUTION REPORT")
-    if len(distributions) == 0:
-        print("No distributions recorded yet, so no contributions to report.")
+    if len(contributions) == 0:
+        print("No donations recorded yet, so no contributions to report.")
         return
-    # parallel lists: donor names and their meal totals
+    # parallel lists: donor names and what they gave in total
     names = []
-    meals = []
+    totals = []
     counts = []
-    for d in distributions:
-        name = d["donor"]
+    for c in contributions:
+        name = c["donor"]
         position = -1
         i = 0
         while i < len(names):
@@ -149,24 +153,24 @@ def donor_report(distributions):
             i = i + 1
         if position == -1:
             names.append(name)
-            meals.append(d["servings"])
+            totals.append(c["servings"])
             counts.append(1)
         else:
-            meals[position] = meals[position] + d["servings"]
+            totals[position] = totals[position] + c["servings"]
             counts[position] = counts[position] + 1
     # print every donor with a while loop over the parallel lists
     count = 1
     i = 0
     while i < len(names):
-        print(f"{count}. {names[i]} - {meals[i]} meals across {counts[i]} distributions")
+        print(f"{count}. {names[i]} - {totals[i]} servings across {counts[i]} donations")
         count = count + 1
         i = i + 1
     top = 0
     top_name = ""
     i = 0
     while i < len(names):
-        if meals[i] > top:
-            top = meals[i]
+        if totals[i] > top:
+            top = totals[i]
             top_name = names[i]
         i = i + 1
-    print(f"Top donor: {top_name} with {top} meals")
+    print(f"Top donor: {top_name} with {top} servings donated")

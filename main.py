@@ -22,13 +22,13 @@ def show_menu():
     print("9. Donor contribution report")
     print("0. Exit")
 
-# keep asking until the field is not empty
+# keep asking until the field is not empty or just spaces
 def ask_nonempty(prompt):
     text = input(prompt)
-    while text == "":
+    while text.strip() == "":
         print("This field cannot be empty.")
         text = input(prompt)
-    return text
+    return text.strip()
 
 # keep asking until the value is a whole number above zero
 def ask_positive_int(prompt):
@@ -72,8 +72,8 @@ def view_recipients(recipients):
         print(f"{count}. {r.name} ({r.org_type}) - {r.remaining_capacity()} of {r.capacity_servings} servings free - accepts {r.food_category}")
         count = count + 1
 
-# record one food batch from a donor
-def record_donation(donations):
+# record one food batch from a donor and log the contribution
+def record_donation(donations, contributions):
     reports.print_header("RECORD FOOD DONATION")
     donor = ask_nonempty("Donor name: ")
     food = ask_nonempty("Food name: ")
@@ -81,6 +81,7 @@ def record_donation(donations):
     servings = ask_positive_int("Number of servings: ")
     expiry = ask_positive_int("Days until expiry: ")
     donations.append(Donation(donor, food, category, servings, expiry))
+    contributions.append({"donor": donor, "servings": servings})
     print(f"Donation recorded: {food} ({servings} servings, expires in {expiry} days)")
 
 # move part of one batch to a recipient and update both records
@@ -143,6 +144,10 @@ def main():
     recipients = get_sample_recipients()
     donations = get_sample_donations()
     distributions = []
+    # every batch ever given, kept at its original size for the donor report
+    contributions = []
+    for d in donations:
+        contributions.append({"donor": d.donor, "servings": d.servings})
     print("FOODLOOP - COMMUNITY FOOD RESCUE AND REDISTRIBUTION MANAGER")
     print("A final assessment application for SDG 2: Zero Hunger")
     choice = ""
@@ -154,7 +159,7 @@ def main():
         elif choice == "2":
             view_recipients(recipients)
         elif choice == "3":
-            record_donation(donations)
+            record_donation(donations, contributions)
         elif choice == "4":
             reports.view_inventory(donations)
         elif choice == "5":
@@ -167,7 +172,7 @@ def main():
         elif choice == "8":
             reports.impact_report(donations, distributions)
         elif choice == "9":
-            reports.donor_report(distributions)
+            reports.donor_report(contributions)
         elif choice == "0":
             confirm = input("Exit FoodLoop? (y/n): ")
             if confirm == "y" or confirm == "yes":

@@ -28,8 +28,8 @@ Selected SDG: SDG 2 - Zero Hunger.
 - Inventory search by food category
 - Recipient matching that checks category compatibility and remaining capacity
 - Partial allocations capped by the batch size and the recipient's free space, with emptied batches removed
-- Stock reconciliation in the impact report: collected = inventory + distributed
-- Donor contribution report with meal totals and the top donor
+- Stock reconciliation in the impact report: collected = inventory + distributed, with the names of served organisations and the urgent batches listed
+- Donor contribution report with the total servings each donor has given and the top donor
 - Input validation on every prompt
 
 ## Getting Started
@@ -89,7 +89,7 @@ Every prompt checks its input and asks again on invalid entry:
 | Zero or empty number field | Please enter a whole number above zero. |
 | Food category other than cooked, raw or packed | Please type cooked, raw or packed. |
 | Recipient category other than cooked, raw, packed or any | Please type cooked, raw, packed or any. |
-| Empty organisation or donor name | This field cannot be empty. |
+| Empty or blank (spaces only) name field | This field cannot be empty. |
 | Donation or recipient number not in the list | Invalid choice, try again. |
 | Allocation above the allowed limit | Allocation must be between 1 and the limit. |
 | Recipient that cannot take the donation | Rejected with a reason, nothing is recorded. |
@@ -163,21 +163,27 @@ IMPACT REPORT
 Total food collected: 320 servings
 Food redistributed: 40 servings
 Food still in inventory: 280 servings
-Distribution rate: 12 percent
+Distribution rate: 12.5 percent
 Recipient organisations served: 1
+ - Hope Food Bank KL
 Batches needing urgent distribution: 2
+ - Vegetable rice from Cafe Ria (1 days left)
+ - Fresh vegetables from Pasar Taman Segar (2 days left)
 Every meal moved is one step closer to SDG 2: Zero Hunger
 ```
 
-The donor contribution report for the same session:
+The donor contribution report for the same session, counted from everything each donor gave:
 
 ```
 ===============================
 DONOR CONTRIBUTION REPORT
 ===============================
-1. Baker House KL - 30 meals across 1 distributions
-2. Cafe Ria - 10 meals across 1 distributions
-Top donor: Baker House KL with 30 meals
+1. Cafe Ria - 40 servings across 1 donations
+2. Baker House KL - 80 servings across 1 donations
+3. Pasar Taman Segar - 30 servings across 1 donations
+4. Grandza Catering - 50 servings across 1 donations
+5. Mydin Meru - 120 servings across 1 donations
+Top donor: Mydin Meru with 120 servings donated
 ```
 
 ## Team
