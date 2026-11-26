@@ -179,11 +179,11 @@ The donor contribution report for the same session, counted from everything each
 ===============================
 DONOR CONTRIBUTION REPORT
 ===============================
-1. Cafe Ria - 40 servings across 1 donations
-2. Baker House KL - 80 servings across 1 donations
-3. Pasar Taman Segar - 30 servings across 1 donations
-4. Grandza Catering - 50 servings across 1 donations
-5. Mydin Meru - 120 servings across 1 donations
+1. Cafe Ria - 40 servings across 1 donation
+2. Baker House KL - 80 servings across 1 donation
+3. Pasar Taman Segar - 30 servings across 1 donation
+4. Grandza Catering - 50 servings across 1 donation
+5. Mydin Meru - 120 servings across 1 donation
 Top donor: Mydin Meru with 120 servings donated
 ```
 

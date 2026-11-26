@@ -168,7 +168,10 @@ def donor_report(contributions):
     count = 1
     i = 0
     while i < len(names):
-        print(f"{count}. {names[i]} - {totals[i]} servings across {counts[i]} donations")
+        word = "donations"
+        if counts[i] == 1:
+            word = "donation"
+        print(f"{count}. {names[i]} - {totals[i]} servings across {counts[i]} {word}")
         count = count + 1
         i = i + 1
     top = 0
