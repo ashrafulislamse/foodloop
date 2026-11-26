@@ -134,7 +134,7 @@ The ranked inventory, with the expired batch first:
 FOOD INVENTORY - MOST URGENT FIRST
 ===============================
 1. Fried chicken packs from Grandza Catering - 50 servings - EXPIRED - DO NOT USE
-2. Vegetable rice from Cafe Ria - 40 servings - URGENT (1 days left)
+2. Vegetable rice from Cafe Ria - 40 servings - URGENT (1 day left)
 3. Fresh vegetables from Pasar Taman Segar - 30 servings - URGENT (2 days left)
 4. Fresh bread and buns from Baker House KL - 80 servings - SOON (3 days left)
 5. Canned food packs from Mydin Meru - 120 servings - FRESH (10 days left)
@@ -168,7 +168,7 @@ Distribution rate: 12.5 percent
 Recipient organisations with recorded allocations: 1
  - Hope Food Bank KL
 Batches needing urgent distribution: 2
- - Vegetable rice from Cafe Ria (1 days left)
+ - Vegetable rice from Cafe Ria (1 day left)
  - Fresh vegetables from Pasar Taman Segar (2 days left)
 Every serving allocated is one step closer to SDG 2: Zero Hunger
 ```

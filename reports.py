@@ -27,6 +27,13 @@ def sort_inventory(donations):
         i = i + 1
     return result
 
+# "1 day left" or "N days left", used on every screen that shows expiry
+def days_left_text(days):
+    word = "days"
+    if days == 1:
+        word = "day"
+    return f"({days} {word} left)"
+
 # show every donation ranked by expiry urgency
 def view_inventory(donations):
     print_header("FOOD INVENTORY - MOST URGENT FIRST")
@@ -39,7 +46,7 @@ def view_inventory(donations):
         if d.is_expired():
             print(f"{count}. {d.food_name} from {d.donor} - {d.servings} servings - {d.urgency_label()}")
         else:
-            print(f"{count}. {d.food_name} from {d.donor} - {d.servings} servings - {d.urgency_label()} ({d.expiry_days} days left)")
+            print(f"{count}. {d.food_name} from {d.donor} - {d.servings} servings - {d.urgency_label()} {days_left_text(d.expiry_days)}")
         count = count + 1
 
 # show only the donations of one category
@@ -51,7 +58,7 @@ def search_inventory(donations, category):
             if d.is_expired():
                 print(f"{d.food_name} from {d.donor} - {d.servings} servings - {d.urgency_label()}")
             else:
-                print(f"{d.food_name} from {d.donor} - {d.servings} servings - {d.urgency_label()} ({d.expiry_days} days left)")
+                print(f"{d.food_name} from {d.donor} - {d.servings} servings - {d.urgency_label()} {days_left_text(d.expiry_days)}")
             found = found + 1
     if found == 0:
         print(f"No {category} food in the inventory right now.")
@@ -136,7 +143,7 @@ def impact_report(donations, distributions):
             urgent.append(d)
     print(f"Batches needing urgent distribution: {len(urgent)}")
     for d in urgent:
-        print(f" - {d.food_name} from {d.donor} ({d.expiry_days} days left)")
+        print(f" - {d.food_name} from {d.donor} {days_left_text(d.expiry_days)}")
     print("Every serving allocated is one step closer to SDG 2: Zero Hunger")
 
 # servings given per donor across the whole session and the top donor
