@@ -102,7 +102,7 @@ def impact_report(donations, distributions):
         total_distributed = total_distributed + d["servings"]
     collected = in_inventory + total_distributed
     print(f"Total food collected: {collected} servings")
-    print(f"Food redistributed: {total_distributed} servings")
+    print(f"Food allocated: {total_distributed} servings")
     print(f"Food still in inventory: {in_inventory} servings")
     if collected > 0:
         # distribution rate as a percentage with one decimal
@@ -120,7 +120,7 @@ def impact_report(donations, distributions):
             i = i + 1
         if position == -1:
             served.append(name)
-    print(f"Recipient organisations served: {len(served)}")
+    print(f"Recipient organisations with recorded allocations: {len(served)}")
     for name in served:
         print(f" - {name}")
     # batches that must move soon, named so volunteers can act on them
@@ -131,7 +131,7 @@ def impact_report(donations, distributions):
     print(f"Batches needing urgent distribution: {len(urgent)}")
     for d in urgent:
         print(f" - {d.food_name} from {d.donor} ({d.expiry_days} days left)")
-    print("Every meal moved is one step closer to SDG 2: Zero Hunger")
+    print("Every serving allocated is one step closer to SDG 2: Zero Hunger")
 
 # servings given per donor across the whole session and the top donor
 def donor_report(contributions):

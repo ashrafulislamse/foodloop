@@ -4,7 +4,7 @@
 ![Dependencies](https://img.shields.io/badge/Dependencies-none-success)
 ![Platform](https://img.shields.io/badge/Platform-Console-lightgrey)
 
-A menu-driven food rescue coordination program built in Python for the group final assessment in BIT1054 Fundamental of Computational Thinking. The program records surplus food donations, ranks them by expiry urgency, matches them to recipient organisations by category and capacity, records distributions, and reports the total meals redistributed, with input validation on every prompt so wrong input never crashes the program.
+A menu-driven food rescue coordination program built in Python for the group final assessment in BIT1054 Fundamental of Computational Thinking. The program records surplus food donations, ranks them by expiry urgency, matches them to recipient organisations by category and capacity, records distributions, and reports the total servings allocated, with input validation on every prompt so wrong input never crashes the program.
 
 Selected SDG: SDG 2 - Zero Hunger.
 
@@ -28,7 +28,7 @@ Selected SDG: SDG 2 - Zero Hunger.
 - Inventory search by food category
 - Recipient matching that checks category compatibility and remaining capacity
 - Partial allocations capped by the batch size and the recipient's free space, with emptied batches removed
-- Stock reconciliation in the impact report: collected = inventory + distributed, with the names of served organisations and the urgent batches listed
+- Stock reconciliation in the impact report: collected = inventory + allocated, with the names of organisations holding recorded allocations and the urgent batches listed
 - Donor contribution report with the total servings each donor has given and the top donor
 - Input validation on every prompt
 
@@ -161,15 +161,15 @@ The impact report after two distributions:
 IMPACT REPORT
 ===============================
 Total food collected: 320 servings
-Food redistributed: 40 servings
+Food allocated: 40 servings
 Food still in inventory: 280 servings
 Distribution rate: 12.5 percent
-Recipient organisations served: 1
+Recipient organisations with recorded allocations: 1
  - Hope Food Bank KL
 Batches needing urgent distribution: 2
  - Vegetable rice from Cafe Ria (1 days left)
  - Fresh vegetables from Pasar Taman Segar (2 days left)
-Every meal moved is one step closer to SDG 2: Zero Hunger
+Every serving allocated is one step closer to SDG 2: Zero Hunger
 ```
 
 The donor contribution report for the same session, counted from everything each donor gave:
