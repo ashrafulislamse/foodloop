@@ -16,7 +16,7 @@ Selected SDG: SDG 2 - Zero Hunger.
 - [Urgency and Matching Rules](#urgency-and-matching-rules)
 - [Input Validation](#input-validation)
 - [Project Structure](#project-structure)
-- [Sample Output](#sample-output)
+- [Screenshots](#screenshots)
 - [Team](#team)
 
 ## Features
@@ -102,90 +102,32 @@ foodloop/
 ├── models.py    # Donation and Recipient classes
 ├── reports.py   # inventory ranking, matching algorithm, impact report
 ├── data.py      # sample recipients and donations for the demonstration
+├── screenshots/ # real terminal screenshots shown in this README
 ├── .gitignore   # keeps Python cache files out of the repository
 └── README.md
 ```
 
-## Sample Output
+## Screenshots
 
-The menu on startup:
+Main menu on startup:
 
-```
-===============================
-FOODLOOP - FOOD RESCUE MANAGER
-SDG 2: ZERO HUNGER
-===============================
-1. Add recipient organisation
-2. View recipient organisations
-3. Record food donation
-4. View food inventory
-5. Search inventory by category
-6. Match a donation to a recipient
-7. Record a distribution
-8. Impact report
-9. Donor contribution report
-0. Exit
-```
+![Main menu](screenshots/01_menu.png)
 
-The ranked inventory, with the expired batch first:
+Inventory ranked most urgent first, with the expired batch flagged:
 
-```
-===============================
-FOOD INVENTORY - MOST URGENT FIRST
-===============================
-1. Fried chicken packs from Grandza Catering - 50 servings - EXPIRED - DO NOT USE
-2. Vegetable rice from Cafe Ria - 40 servings - URGENT (1 day left)
-3. Fresh vegetables from Pasar Taman Segar - 30 servings - URGENT (2 days left)
-4. Fresh bread and buns from Baker House KL - 80 servings - SOON (3 days left)
-5. Canned food packs from Mydin Meru - 120 servings - FRESH (10 days left)
-```
+![Inventory ranked by expiry urgency](screenshots/02_inventory_sorted.png)
 
-Matching a donation:
+Matching a donation to a recommended recipient:
 
-```
-Match found: Vegetable rice (40 servings) can go to Hope Food Bank KL
-Reason: accepts any food and can take up to 200 servings
-```
+![Matching a donation](screenshots/03_match.png)
 
-A partial allocation, 30 servings of an 80-serving bread batch:
+Impact report:
 
-```
-Distributed 30 servings of Fresh bread and buns to Hope Food Bank KL
-50 servings of Fresh bread and buns remain in the inventory.
-```
+![Impact report](screenshots/04_impact_report.png)
 
-The impact report after two distributions:
+Donor contribution report:
 
-```
-===============================
-IMPACT REPORT
-===============================
-Total food collected: 320 servings
-Food allocated: 40 servings
-Food still in inventory: 280 servings
-Food usable for distribution (not expired): 230 servings
-Distribution rate: 12.5 percent
-Recipient organisations with recorded allocations: 1
- - Hope Food Bank KL
-Batches needing urgent distribution: 2
- - Vegetable rice from Cafe Ria (1 day left)
- - Fresh vegetables from Pasar Taman Segar (2 days left)
-Every serving allocated is one step closer to SDG 2: Zero Hunger
-```
-
-The donor contribution report for the same session, counted from everything each donor gave:
-
-```
-===============================
-DONOR CONTRIBUTION REPORT
-===============================
-1. Cafe Ria - 40 servings across 1 donation
-2. Baker House KL - 80 servings across 1 donation
-3. Pasar Taman Segar - 30 servings across 1 donation
-4. Grandza Catering - 50 servings across 1 donation
-5. Mydin Meru - 120 servings across 1 donation
-Top donor: Mydin Meru with 120 servings donated
-```
+![Donor contribution report](screenshots/05_donor_report.png)
 
 ## Team
 
